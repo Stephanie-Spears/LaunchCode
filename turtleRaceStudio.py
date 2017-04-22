@@ -20,6 +20,7 @@ def flagGirl():
         flagGirl.penup()
         flagGirl.forward(5)
         flagGirl.pendown()
+        
 
 
 def createTurtle(startPoint, numOfTurtles):
@@ -42,25 +43,27 @@ flagGirl()
 numOfTurtles = random.randint(2,9)
 turtleIndex = list(range(0, numOfTurtles))
 
+dist = 0
 a = {}
 startPoint = 175
+    
 for i in range(0, numOfTurtles):
     key = "Turtle" + str(i)
     a[key] = createTurtle(startPoint, numOfTurtles)
     startPoint = startPoint - (400/(numOfTurtles))
     print("{}'s speed is: {}".format(key, a[key].speed()))
 
-dist = 2
-for i in range(0, 200):
-    a[key].tracer((8),(25))
+while dist < 400:
 
-    a[key].forward(dist)
-    dist+=2
+    for i in range(0, numOfTurtles):
+        dist = (a["Turtle" + str(i)]).speed()
+        a["Turtle" + str(i)].forward(dist)
+        print((a["Turtle" + str(i)]).pos())
+        if (a["Turtle" + str(i)]).pos()<400:
+            break
 
-    
-#wn.ontimer((a["Turtle0"].forward(400), a["Turtle2"].forward(400)), 10*numOfTurtles)
+        
 
-   # turtle.forward(300)
-    
+
     
 wn.exitonclick()
