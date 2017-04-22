@@ -3,16 +3,25 @@ import random
 wn = turtle.Screen()       # 2. Create a screen
 wn.bgcolor('lightblue')
 
-def createTurtle():
+def createTurtle(startPoint, numOfTurtles):
+    
+    
+    aTurtle = turtle.Turtle()
+
     colors = ["red", "blue", "green", "yellow", "purple", "violet", "maroon", "black", "white"]
     randIntColor = random.randrange(0,(len(colors)))
     randIntSpeed = random.randrange(4,10)
-    aTurtle = turtle.Turtle()
     aTurtle.shape("turtle")
     aTurtle.speed(randIntSpeed)
     aTurtle.color(colors[randIntColor])
     
+   # for i in range(0, numOfTurtles):
+    aTurtle.penup()  
+    aTurtle.goto(-200, startPoint) 
+    aTurtle.pendown()
+        
     return aTurtle
+
 
 numOfTurtles = random.randint(2,9)
 turtleIndex = list(range(0, numOfTurtles))
@@ -21,13 +30,12 @@ print("number of turtles:", numOfTurtles)
 
 startPoint = 175
 for i in range(0, numOfTurtles):
-    turtleIndex[i] = createTurtle()
-    turtleIndex[i].penup()
-    turtleIndex[i].goto(-200, startPoint) 
-    turtleIndex[i].pendown()
+    turtleIndex[i] = createTurtle(startPoint, numOfTurtles)
     startPoint = startPoint - (400/(numOfTurtles))
     
-flagGirl = createTurtle()
+    
+flagGirl = turtle.Turtle()
+flagGirl.shape("turtle")
 flagGirl.color("hotpink")
 flagGirl.pensize(4)
 flagGirl.pencolor("red")
@@ -48,8 +56,17 @@ print(fastTurtle.speed())
 for i in range(0, numOfTurtles):
     if turtleIndex[i].speed() > fastTurtle.speed():
         fastTurtle = turtleIndex[i]
-        print(fastTurtle)
+
         
+#wn.onscreenclick(turtleIndex.goto(200, (startPoint*-1)))        
+#def makeRace(numOfTurtles, turtleIndex):
+#    for i in numOfTurtles:
+#        turtleIndex[i] & turtleIndex[i+1]
+        
+        
+#makeRace(numOfTurtles, turtleIndex)        
+
+
 #flagGirl.pendown()
 
 #flagGirl.left(90)
@@ -64,5 +81,7 @@ for i in range(0, numOfTurtles):
 #lance.goto(-100,-20)
 
 # your code goes here
+
+wn.exitonclick()
 
 wn.exitonclick()
