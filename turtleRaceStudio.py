@@ -48,12 +48,18 @@ for i in range(0, numOfTurtles):
     key = "Turtle" + str(i)
     a[key] = createTurtle(startPoint, numOfTurtles)
     startPoint = startPoint - (400/(numOfTurtles))
-    #wn.textinput("{}'s speed is: {}".format(key, a[key].speed()))
     print("{}'s speed is: {}".format(key, a[key].speed()))
 
+dist = 2
+for i in range(0, 200):
+    a[key].tracer((8),(25))
 
-for turtle in wn.turtles():
-    wn.ontimer((a[key].forward(300)), 20)
+    a[key].forward(dist)
+    dist+=2
+
+    
+#wn.ontimer((a["Turtle0"].forward(400), a["Turtle2"].forward(400)), 10*numOfTurtles)
+
    # turtle.forward(300)
     
     
