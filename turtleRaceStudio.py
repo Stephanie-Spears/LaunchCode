@@ -43,7 +43,6 @@ flagGirl()
 numOfTurtles = random.randint(2,9)
 turtleIndex = list(range(0, numOfTurtles))
 
-dist = 0
 a = {}
 startPoint = 175
     
@@ -53,15 +52,19 @@ for i in range(0, numOfTurtles):
     startPoint = startPoint - (400/(numOfTurtles))
     print("{}'s speed is: {}".format(key, a[key].speed()))
 
-while dist < 400:
 
-    for i in range(0, numOfTurtles):
-        dist = (a["Turtle" + str(i)]).speed()
-        a["Turtle" + str(i)].forward(dist)
-        print((a["Turtle" + str(i)]).pos())
-        if (a["Turtle" + str(i)]).pos()<400:
-            break
 
+    
+def winner():
+    dist = 0
+    while dist < 400:
+        for i in range(0, numOfTurtles):
+            if int(a["Turtle" + str(i)].xcor())>125:
+                return ("{} wins! Suck it losers!".format("Turtle" + str(i)))
+            else:
+                dist = (a["Turtle" + str(i)]).speed()
+                a["Turtle" + str(i)].forward(dist)
+print(winner())
         
 
 
