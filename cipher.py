@@ -12,13 +12,9 @@ def caesarShift(shh, encrypt):
             index=-1
         hush += encrypt[index+1:index+2]
 
-
-
-
-
-    print(shh)
-    print(hush)
-    print(encrypt)
+    print("original: ", shh)
+    print("encrypted: ", hush)
+    print("map of keys: ", encrypt)
 
 shh = "Run Baby Rabbit!}~a s~a end"
 encrypt=string.ascii_lowercase+string.ascii_uppercase+string.whitespace+string.punctuation
