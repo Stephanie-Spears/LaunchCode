@@ -1,45 +1,26 @@
 import string
-from random import shuffle
 
-#alpha = string.ascii_lowercase+string.ascii_uppercase
-plainText = raw_input("What is your plaintext? ")
-shift = int(raw_input("What is your shift? "))
+def caesarShift(shh, encrypt):
+    #adding the whitespace makes it so only the last whitespaces will be seen as punctuation...
+    #so it just substitutes one whitespace for a different kind of whitespace. Sort of hard to see (ie: Run '\t' Rabbit)
 
-def caesar(plainText, shift): 
-
-    for ch in plainText:
-        if ch.isalpha():
-            stayInAlphabet = ord(ch) + shift 
-            if stayInAlphabet > ord('z'):
-                stayInAlphabet -= 26
-            finalLetter = chr(stayInAlphabet)
-        cipherText = ""
-        cipherText += finalLetter
-
-    print ("Your ciphertext is: ", cipherText)
-
-    return cipherText
-
-caesar(plainText, shift)
-
-#def caesarShiftSub(secretWord, shift):
-    #CaeserShift with Substition Cipher--with Caeser Shift we need only know the number of rotations to decrypt
-    #Adding the Substitution Cipher makes it necessary to know the full list of letter substitutions
-    
- #   alpha = string.ascii_lowercase+string.ascii_uppercase
-   # shift_alpha = alpha[shift:] + alpha[:shift]
-  #  encodingTable = str.maketrans(alpha, shift_alpha)
-    #return secretWord.translate(encodingTable)
-    
+    hush = ""
+    mapLen = len(encrypt)
+    for i in shh:
+        index = encrypt.find(i)
+        if index+2 > mapLen:
+            index=-1
+        hush += encrypt[index+1:index+2]
 
 
-#def rosetta(secret, decipher):
-#string.ascii_lowercase+string.ascii_uppercase
-#  print(cipher)
-# print(decipher)
-    
-secretWord = "wolf"
-shift = 2
-#encodingTable = caeserShiftSub(secretWord, shift)
-print(caesarShiftSub(secretWord,shift))
-#rosetta(secretWord, encodingTable)
+
+
+
+    print(shh)
+    print(hush)
+    print(encrypt)
+
+shh = "Run Baby Rabbit!}~a s~a end"
+encrypt=string.ascii_lowercase+string.ascii_uppercase+string.whitespace+string.punctuation
+
+caesarShift(shh, encrypt)
